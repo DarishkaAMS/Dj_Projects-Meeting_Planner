@@ -1,12 +1,14 @@
-<!DOCTYPE html>
-<html lang = "en">
-<head>
-    <title>Meeting: {{meeting.title}}</title>
-</head>
-        <h1>{{meeting.title}} </h1>
+{% extends "base.html" %}
 
-    <p style="color:chartreuse; background-color: darkblue;">
-        This meeting has been scheduled on {{meeting.date}}, at {{meeting.start_time}} in <b>{{meeting.room}}</b>
-    </p>
-<body></body>
-</html>
+{% block title %} Meeting: {{meeting.title}} {% endblock %}
+
+{% block content %}
+<h1>{{meeting.title}} </h1>
+
+<p>
+    This meeting has been scheduled on {{meeting.date}}, at {{meeting.start_time}} in <b>{{meeting.room}}</b>
+</p>
+
+<a href="{% url 'welcome' %}">Home</a>
+
+{% endblock %}

@@ -1,17 +1,24 @@
-<!DOCTYPE html>
-<html lang = "en">
-<head>
-    <title>My Welcome Page!</title>
-</head>
-    <p>
-        <h1>Just some text {{x}} that is too long to type </h1>
-    </p>
-    <p style="color:chartreuse;">
-        There are currently {{num_meetings}} meeting in the DB
-    </p>
+{% extends "base.html" %}
+
+{% block title %} Welcome {% endblock %}
+
+{% block content %}
+    <h1>We are glad to welcome you here!</h1>
 
     <p>
-        This is the message you were looking for!
+        <!-- This is the message you were looking for! -->
     </p>
-<body></body>
-</html>
+    
+    <h2>Meetings</h2>
+    <ul>
+        {% for meeting in meetings %}
+        <li>
+            <a href= "{% url 'detail' meeting.id%}">
+                {{ meeting.title }}
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'rooms' %}">Rooms list</a>
+
+{% endblock %}
